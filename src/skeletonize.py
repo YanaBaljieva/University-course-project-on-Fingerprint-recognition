@@ -4,7 +4,7 @@ from skimage.morphology import skeletonize as sk_skeletonize
 
 
 def skeletonize(image_input):
-    
+
     image = np.zeros_like(image_input, dtype=np.uint8)
     image[image_input == 0] = 1
 

@@ -11,7 +11,7 @@ def normalise_zero_mean_unit_variance(img):
 
 
 def create_segmented_and_variance_images(im, block_size, threshold=0.2):
-    
+
     im = im.astype(np.float32)
     rows, cols = im.shape
 

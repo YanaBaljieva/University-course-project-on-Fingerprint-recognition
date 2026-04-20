@@ -2,7 +2,6 @@ import numpy as np
 
 
 def normalize(img, desired_mean=100.0, desired_var=100.0):
-    
     img = img.astype(np.float32)
 
     mean = np.mean(img)

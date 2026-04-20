@@ -3,8 +3,7 @@ import numpy as np
 import cv2 as cv
 
 
-def calculate_angles(im, W=16, smooth=False):
-    
+def calculate_angles(im, W=16, smooth=True):
     im = im.astype(np.float32)
     rows, cols = im.shape
 
@@ -26,7 +25,7 @@ def calculate_angles(im, W=16, smooth=False):
             block_Gy = Gy[r0:min(r0 + W, rows), c0:min(c0 + W, cols)]
 
             Vx = 2 * np.sum(block_Gx * block_Gy)
-            Vy = np.sum(block_Gx**2 - block_Gy**2)
+            Vy = np.sum(block_Gx ** 2 - block_Gy ** 2)
 
             if abs(Vx) > 1e-8 or abs(Vy) > 1e-8:
                 angles[r, c] = 0.5 * np.arctan2(Vx, Vy)
@@ -50,3 +49,9 @@ def smooth_angles(angles):
     sin2 = cv.filter2D(sin2, -1, kernel)
 
     return 0.5 * np.arctan2(sin2, cos2)
+
+
+def get_angle_at_point(angles, x, y, block_size=16):
+    block_r = min(x // block_size, angles.shape[0] - 1)
+    block_c = min(y // block_size, angles.shape[1] - 1)
+    return angles[block_r, block_c]

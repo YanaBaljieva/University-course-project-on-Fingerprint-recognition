@@ -3,7 +3,6 @@ import scipy.ndimage
 
 
 def gabor_filter(im, orient, freq, kx=0.65, ky=0.65, block_size=16):
-    
     angle_inc = 3
     im = np.asarray(im, dtype=np.float32)
     rows, cols = im.shape
@@ -30,7 +29,7 @@ def gabor_filter(im, orient, freq, kx=0.65, ky=0.65, block_size=16):
     x, y = np.meshgrid(arr, arr)
 
     reffilter = np.exp(
-        -(((x**2) / (sigma_x[0] ** 2)) + ((y**2) / (sigma_y[0] ** 2)))
+        -(((x ** 2) / (sigma_x[0] ** 2)) + ((y ** 2) / (sigma_y[0] ** 2)))
     ) * np.cos(2 * np.pi * unfreq[0] * x)
 
     filt_rows, filt_cols = reffilter.shape

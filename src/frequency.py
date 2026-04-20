@@ -4,7 +4,6 @@ import scipy.ndimage
 
 
 def frequest(im, orient_block, kernel_size, min_wave_length, max_wave_length):
-    
     rows, cols = im.shape
 
     cosorient = np.cos(2 * orient_block)
@@ -47,7 +46,6 @@ def frequest(im, orient_block, kernel_size, min_wave_length, max_wave_length):
 
 
 def ridge_freq(im, mask, orient, block_size, kernel_size=5, minWaveLength=5, maxWaveLength=15):
-    
     rows, cols = im.shape
     freq = np.zeros((rows, cols), dtype=np.float32)
 
